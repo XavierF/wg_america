@@ -19,7 +19,7 @@ get_header(); ?>
 
 				<?php endwhile; // end of the loop. ?>
 				<?php if (in_category('Careers')) : ?>
-					<?php include('sidebar-careers.php'); ?>
+					<?php include('sidebar-careers-demo.php'); ?>
 				<?php endif; ?>
 </div></div>
 <?php get_footer(); ?>

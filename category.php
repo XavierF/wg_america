@@ -183,7 +183,7 @@ get_header(); ?>
 					</div>
                 </article>
 	        </div>
-	        <?php include('sidebar-careers.php'); ?>
+	        <?php include('sidebar-careers-demo.php'); ?>
 	    </div>
 	</div>
 <?php endif; ?>

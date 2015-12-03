@@ -49,32 +49,20 @@
     </div><!-- header-vacancy -->
 
     <!--  DISPLAY CAREER POSTS BY CATEGORY IN A NICE LTITLE ACCORDION  -->
-    <ul class="b-sidenav b-sidenav__vacancy">
-        <?php
-        // get all the categories from the database
-        $cats = get_category( array('hide_empty' => 1, 'name' => 'select_name', 'hierarchical' => true, 'exclude' => '1,3,4,5,20,21,22,23,24' ) ); 
+    <ul class="b-sidenav b-sidenav__vacancy" id="vacancy-list">
+        
+             <?php $args = array( 'posts_per_page' => 10, 'offset'=> 1, 'hierarchical' => true, 'exclude' => '1,3,4,5,20,21,22,23,24' );
 
-            // loop through the categries
-            foreach ($cats as $cat) {
-                // setup the cateogory ID
-                $cat_id= $cat->term_id;
-                // CAREER CATEGORIES AND DROPDOWN TOGGLE
-                echo "<li class='open-sidenav'><a href='#vacancy-list-1' class='sidenav-parent'><span>".$cat->name."</span></a><ul id='vacancy-list-26'>";
-                // create a custom wordpress query
-                query_posts("cat=$cat_id&post_per_page=25");
-                // start the wordpress loop!
-                rewind_posts();
+                $myposts = get_posts( $args );
+                foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+                    <li class="postid-<?php the_ID(); ?>">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </li>
+                <?php endforeach; 
+                wp_reset_postdata();?>
+          
+    </ul>
 
-                if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-                    <?php // create our link now that the post is setup ?>
-                    <li class="postid-<?php the_ID(); ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                    <?php echo '</li>'; ?>
-
-                <?php endwhile; endif; // done our wordpress loop. Will start again for each category ?>
-            </ul>
-            <?php } // done the foreach statement ?>
-    
         <!-- ACCORDION FUNCTIONALITY -->
         <script type="text/javascript">
             $(document).ready(function() {
@@ -88,7 +76,7 @@
         <!--  ACTIVE CLASS FUNCTIONALITY -->
          <script type="text/javascript">
             $(document).ready(function(){
-                $.each($("ul#vacancy-list-26 li"), function(index, value){
+                $.each($("ul#vacancy-list li"), function(index, value){
                     var curLinkClass = $(this).attr('class');
 
                     if($("body").hasClass(curLinkClass)){

@@ -70,8 +70,7 @@ get_header(); ?>
 			<div class="hr-video"><div class="title-video" title="Video"></div></div>
 			<div class="content-video" style="position: relative;">
 				<video id="video_260" class="video-js vjs-default-skin" controls preload="none" width="582" height="357"
-				poster="<?php bloginfo( 'stylesheet_directory' ); ?>/img/warplanes-screenshot.jpg"
-				data-setup="{}">
+				poster="<?php bloginfo( 'stylesheet_directory' ); ?>/img/warplanes-screenshot.jpg" data-setup="{}">
 				<source src="http://wargaming.com/media/cms_page_media/4/WoWP_Video_Trailers_CBT_Launch_NA_1.mp4" type='video/mp4' />
 				<source src="http://wargaming.com/media/cms_page_media/4/WoWP_Video_Trailers_CBT_Launch_NA_1.webm" type='video/webm' />
 				<source src="http://wargaming.com/media/cms_page_media/4/WoWP_Video_Trailers_CBT_Launch_NA_1.ogv" type='video/ogg' />
